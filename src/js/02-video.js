@@ -10,29 +10,27 @@ player.on(
   throttle(function ({ seconds }) {
     console.log(seconds);
     localStorage.setItem('videoplayer-current-time', seconds);
-  }),
-  1000
+  }, 1000)
 );
+
 const timePauseVideo = localStorage.getItem('videoplayer-current-time');
+
 player
   .setCurrentTime(timePauseVideo)
-  .then(function (seconds) {
-    // seconds = the actual time that the player seeked to
-  })
+  .then(function (seconds) {})
   .catch(function (error) {
     switch (error.name) {
       case 'RangeError':
         console.log(
           'the time was less than 0 or greater than the video’s duration'
         );
-
         break;
-
       default:
         // some other error occurred
         break;
     }
   });
-player.getVideoTitle().then(function (title) {
-  console.log('title:', title);
-});
+
+// player.getVideoTitle().then(function (title) {
+//   console.log('title:', title);
+// });
