@@ -14,23 +14,19 @@ player.on(
 );
 
 const timePauseVideo = localStorage.getItem('videoplayer-current-time');
-
-player
-  .setCurrentTime(timePauseVideo)
-  .then(function (seconds) {})
-  .catch(function (error) {
-    switch (error.name) {
-      case 'RangeError':
-        console.log(
-          'the time was less than 0 or greater than the video’s duration'
-        );
-        break;
-      default:
-        // some other error occurred
-        break;
-    }
-  });
-
-// player.getVideoTitle().then(function (title) {
-//   console.log('title:', title);
-// });
+if (timePauseVideo) {
+  player.setCurrentTime(timePauseVideo);
+  // .then(function (seconds) {})
+  // .catch(function (error) {
+  //   switch (error.name) {
+  //     case 'RangeError':
+  //       console.log(
+  //         'the time was less than 0 or greater than the video’s duration'
+  //       );
+  //       break;
+  //     default:
+  //       // some other error occurred
+  //       break;
+  //   }
+  // });
+}
